@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                            http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+                            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+	<context:component-scan base-package="justin.*" />
+	
+	<!-- 启用@AsjectJ支持:  属性proxy-target-class默认为false，代表只代理接口，如果要代理类，需要设置未true -->
+	<aop:aspectj-autoproxy />
+
+	<bean id="testBean" class="justin.listener.TestBean">
+		<property name="name" value="ThisisTestBean"></property>
+	</bean>
+	
+	<bean id="AOPTargetClass" class="justin.aop.annotation.AOPTargetClass">
+	</bean>
+
+	<bean id="aopA" class="justin.aop.base.AOPClassA" />
+	<bean id="aopB" class="justin.aop.base.AOPClassB" />
+	<bean id="apTime" class="justin.aop.base.AspectPointTime" />
+	<bean id="apLog" class="justin.aop.base.AspectPointLog" />
+
+	<aop:config>
+		<aop:aspect id="time" ref="apTime" order="2">
+			<aop:pointcut id="addJobMethod" expression="execution(* justin.aop.base.AOPInterface.job*(..))" />
+			<aop:pointcut id="addWorkMethod" expression="execution(* justin.aop.base.AOPInterface.work*(..))" />
+			<aop:before method="printTime" pointcut-ref="addJobMethod" />
+			<aop:before method="printTime" pointcut-ref="addWorkMethod" />
+			<aop:after method="printChinaTime" pointcut-ref="addWorkMethod" />
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect id="log" ref="apLog" order="1">
+			<aop:pointcut id="addWorkMethod" expression="execution(* justin.aop.base.AOPInterface.work*(..))" />
+			<aop:before method="LogBefore" pointcut-ref="addWorkMethod" />
+			<aop:after method="LogAfter" pointcut-ref="addWorkMethod" />
+		</aop:aspect>
+	</aop:config>
+
+
+</beans>
