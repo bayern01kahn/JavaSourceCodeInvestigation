@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SourceCode Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<springframework.version>4.0.6.RELEASE</springframework.version>
 		<jersey.version>2.14</jersey.version>
@@ -19,7 +19,10 @@
 		<dom4j.version>2.0.0</dom4j.version>
 		<jdom.version>2.0.0</jdom.version>
 	</properties>
-	
+
+
+
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -35,11 +38,11 @@
 			<version>1.0</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.aspectj</groupId>
-		    <artifactId>aspectjweaver</artifactId>
-		    <version>1.8.0</version>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.0</version>
 		</dependency>
-		
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -57,9 +60,9 @@
 			<version>${springframework.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-webmvc</artifactId>
-		    <version>${springframework.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springframework.version}</version>
 		</dependency>
 
 		<dependency>
@@ -67,7 +70,7 @@
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>${jersey.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.glassfish.jersey.ext</groupId>
 			<artifactId>jersey-spring3</artifactId>
@@ -102,47 +105,59 @@
 			<artifactId>jersey-entity-filtering</artifactId>
 			<version>${jersey.version}</version>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${javax.servlet.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${http.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>${joda-time.version}</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.dom4j</groupId>
-		    <artifactId>dom4j</artifactId>
-		    <version>${dom4j.version}</version>
+			<groupId>org.dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${dom4j.version}</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.jdom</groupId>
-		    <artifactId>jdom</artifactId>
-		    <version>${jdom.version}</version>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>${jdom.version}</version>
 		</dependency>
-				
+
 
 	</dependencies>
 	<build>
 		<finalName>JavaSourceCodeInvestigation</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
