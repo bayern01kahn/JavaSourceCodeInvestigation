@@ -89,7 +89,7 @@ public class HttpUtil {
 		if (status == HttpStatus.SC_OK) {
 			log.debug("http 响应结果　:{}", returnContent);
 		} else {
-			log.error("http 执行错误， status code: {}, url: {},returnContent:{}", status,url,returnContent);
+			log.error("http 执行错误， status code: {}, url: {},returnContent:{}", status);
 			returnContent = null; // 不将错误信息返回给业务程序
 		}
 
