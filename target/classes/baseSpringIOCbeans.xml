@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<beans>
-    <bean id="studentDao" class="justin.ioc.implMyself.baseSpringIOCSet.StudentDaoImp" />    
-    <bean id="studentService" class="justin.ioc.implMyself.baseSpringIOCSet.StudentServiceImp" >    
-        <property name="studentDao" bean="studentDao"/>    
-    </bean>  
-</beans>
