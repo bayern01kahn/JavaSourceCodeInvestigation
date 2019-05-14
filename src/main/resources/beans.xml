@@ -3,7 +3,7 @@
 <beans>
     <bean id="javaBean" class="justin.ioc.implMyself.iocReflect.JavaBean">
        <property name="userName">
-           <value>Jonney</value>
+           <value>Justin</value>
        </property>
        <property name="password">
            <value>1234567890</value>

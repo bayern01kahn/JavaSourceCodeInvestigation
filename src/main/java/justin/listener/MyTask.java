@@ -19,19 +19,19 @@ public class MyTask extends TimerTask{
     @Override  
     public void run() {  
         // 考虑到多线程的情况，这里必须要同步  
-        synchronized (lock){  
-            System.out.println("定时器开始执行...");  
-            ListIterator<HttpSession> listIterator = list.listIterator();  
-            while(listIterator.hasNext()){  
-                HttpSession httpSession = listIterator.next();  
-                // httpSession.getLastAccessedTime() = session的最后访问时间  
-                if(System.currentTimeMillis() - httpSession.getLastAccessedTime() > 1000*30){  
-                    // 手动销毁session  
-                    httpSession.invalidate();  
-                    // 从集合中移除已经被销毁的session  
-                    listIterator.remove();  
-                }  
-            }  
-        }  
+//        synchronized (lock){
+//            System.out.println("定时器开始执行...");
+//            ListIterator<HttpSession> listIterator = list.listIterator();
+//            while(listIterator.hasNext()){
+//                HttpSession httpSession = listIterator.next();
+//                // httpSession.getLastAccessedTime() = session的最后访问时间
+//                if(System.currentTimeMillis() - httpSession.getLastAccessedTime() > 1000*30){
+//                    // 手动销毁session
+//                    httpSession.invalidate();
+//                    // 从集合中移除已经被销毁的session
+//                    listIterator.remove();
+//                }
+//            }
+//        }
     }  
 }  
