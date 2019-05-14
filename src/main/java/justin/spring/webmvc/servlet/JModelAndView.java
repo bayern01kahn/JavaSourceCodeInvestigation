@@ -3,7 +3,7 @@ package justin.spring.webmvc.servlet;
 import java.util.Map;
 
 /**
- * Created by Tom on 2019/4/13.
+ * Created by Justin
  */
 public class JModelAndView {
 

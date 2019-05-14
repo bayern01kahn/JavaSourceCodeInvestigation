@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Tom on 2019/4/13.
+ * Created by Justin
  */
 public class JHandlerAdapter {
     public boolean supports(Object handler){ return (handler instanceof JHandlerMapping);}
