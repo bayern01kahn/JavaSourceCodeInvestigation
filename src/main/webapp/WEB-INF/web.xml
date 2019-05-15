@@ -6,6 +6,7 @@
          version="2.4">
 	<display-name>Justin Web Application</display-name>
 
+    <!-- 手写 spring 的配置  begin -->
     <servlet>
         <servlet-name>justinmvc</servlet-name>
         <servlet-class>justin.spring.webmvc.servlet.JDispatcherServlet</servlet-class>
@@ -20,6 +21,13 @@
         <servlet-name>justinmvc</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+    <!-- 手写 spring 的配置  end -->
+
+
+
+
+
+
 
 
 	<!--<context-param>-->

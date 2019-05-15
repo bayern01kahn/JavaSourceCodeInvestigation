@@ -31,6 +31,7 @@ public class JMethodInvocation implements JJoinPoint {
         this.interceptorsAndDynamicMethodMatchers = interceptorsAndDynamicMethodMatchers;
     }
 
+    // ***  AOP责任链 核心处理方法  *** //
     public Object proceed() throws Throwable{
 
         // 如果Interceptor执行完了，则执行joinPoint

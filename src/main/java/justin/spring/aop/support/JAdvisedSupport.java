@@ -17,11 +17,8 @@ public class JAdvisedSupport {
 
     private Class<?> targetClass;
     private Object target;
-
     private JAopConfig config;
-
     private Pattern pointCutClassPattern;
-
     private transient Map<Method, List<Object>> methodCache;
 
 
