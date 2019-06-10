@@ -36,7 +36,6 @@ public class classLoaderTest {
 //    private  static int y;
 //    private static classLoaderTest instance = new classLoaderTest();
 
-
     /**
      * 情景2:   特殊情况
      * 创建单例在 赋值之后
