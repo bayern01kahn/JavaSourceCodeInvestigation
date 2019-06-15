@@ -2,11 +2,7 @@ package justin.juc.semaphore;
 
 import java.util.concurrent.Semaphore;
 
-/**
- * 腾讯课堂搜索 咕泡学院
- * 加群获取视频：608583947
- * 风骚的Michael 老师
- */
+
 public class SemaphoreDemo {
 
     //限流（AQS）
@@ -31,6 +27,11 @@ public class SemaphoreDemo {
                 Thread.sleep(2000);
                 System.out.println("第"+num+" 开走喽");
                 semaphore.release();
+
+                System.out.println("AvailablePermits: " + semaphore.availablePermits());
+                System.out.println("QueueLength: " + semaphore.getQueueLength());
+
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -42,6 +43,8 @@ public class SemaphoreDemo {
         for(int i=0;i<10;i++){
             new Car(i,semaphore).start();
         }
+
+
     }
 
 
