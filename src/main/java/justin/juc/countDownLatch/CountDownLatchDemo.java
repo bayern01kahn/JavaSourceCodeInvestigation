@@ -5,8 +5,6 @@ import java.util.concurrent.CountDownLatch;
 
 public class CountDownLatchDemo extends Thread {
 
-    static CountDownLatch countDownLatch = new CountDownLatch(100);
-
     public static void main(String[] args) throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(3);
         long start = System.currentTimeMillis();
@@ -18,7 +16,8 @@ public class CountDownLatchDemo extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Thread1");
+            Thread.currentThread().setName("ThreadA");
+            System.out.println("ThreadA");
             countDownLatch.countDown(); //3-1=2
         }).start();
         new Thread(() -> {
@@ -28,7 +27,8 @@ public class CountDownLatchDemo extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Thread2");
+            Thread.currentThread().setName("ThreadB");
+            System.out.println("ThreadB");
             countDownLatch.countDown();//2-1=1
         }).start();
         new Thread(() -> {
@@ -38,7 +38,8 @@ public class CountDownLatchDemo extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Thread3");
+            Thread.currentThread().setName("ThreadC");
+            System.out.println("ThreadC");
             countDownLatch.countDown();//1-1=0
         }).start();
         countDownLatch.await();

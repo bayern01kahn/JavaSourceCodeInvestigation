@@ -1,5 +1,7 @@
 package justin.test;
 
+import java.util.ArrayList;
+
 public class initTest {
     public static void main(String[] args) {
         System.out.println(FinalT.NAME);
@@ -10,6 +12,7 @@ class FinalT {
     static {
         System.out.println("FinalT初始化");
     }
+
 }
 /**
 为啥没有”FinalT初始化”呢，我们先来看一下这个class文件的字节码吧！
