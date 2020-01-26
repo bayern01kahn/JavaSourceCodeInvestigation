@@ -13,18 +13,25 @@ public class CountDownLatchDemo1 extends Thread {
      *
      * 放置countdownlatch.await() 的地方 都会把调用者放入 同步等待队列,
      * 当 count=0 时, 谁会被先唤醒 是随机的
+     *
+     * 1.调用 cdl.await() 的线程 加入同步队列以及被挂起的过程
+     * 2.调用 cdl.await() 的线程 移出同步队列以及被唤醒的过程
+     * 3.
+     * 4.
+     * 5.
+     * 6.
      */
     public static void main(String[] args) throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(V);
         StringBuffer sb = new StringBuffer(255);
         Thread waitT1 = new Thread(() -> {
             try {
-                Thread.currentThread().setName("WaitThread-1");
+                Thread.currentThread().setName("WaitT1");
 
-                sb.append("waitThread1 等待任务就绪.\n");
+                sb.append("WaitT1 就绪.\n");
                 //countDownLatch.await(5, TimeUnit.SECONDS);
                 countDownLatch.await();
-                sb.append("waitThread1 等待结束.\n");
+                sb.append("WaitT1 结束.\n");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -32,12 +39,11 @@ public class CountDownLatchDemo1 extends Thread {
 
         Thread waitT2 = new Thread(() -> {
             try {
-                Thread.currentThread().setName("WaitThread-2");
-                sb.append("waitThread2 等待任务就绪.\n");
+                Thread.currentThread().setName("WaitT2");
+                sb.append("WaitT2 就绪.\n");
                 //countDownLatch.await(1, TimeUnit.SECONDS);
                 countDownLatch.await();
-                //countDownLatch.await();
-                sb.append("waitThread2 等待结束.\n");
+                sb.append("WaitT2 结束.\n");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -46,14 +52,12 @@ public class CountDownLatchDemo1 extends Thread {
         waitT1.start();
         waitT2.start();
 
-        Thread.sleep(3000);
-
-        for(int i=0; i<V; i++){
+        for(int i=1; i<=V; i++){
             final int tmp = i;
 
             Thread task = new Thread(() -> {
-                Thread.currentThread().setName("Task-Thread-"+tmp);
-                sb.append(String.format("task[%s] 准备就绪:\n", tmp));
+                Thread.currentThread().setName("TaskT-"+tmp);
+                sb.append(String.format("task[%s] 就绪:\n", tmp));
                 countDownLatch.countDown();
                 sb.append(String.format("task[%s] 结束:\n", tmp));
             });
@@ -64,7 +68,7 @@ public class CountDownLatchDemo1 extends Thread {
         waitT1.join();
         waitT2.join();
 
-        sb.append("Test Done\n");
+        sb.append("任务结束\n");
         System.out.println(sb.toString());
     }
 }
