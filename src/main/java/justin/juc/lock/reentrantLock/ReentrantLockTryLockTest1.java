@@ -1,4 +1,4 @@
-package justin.juc.reentrantLock;
+package justin.juc.lock.reentrantLock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

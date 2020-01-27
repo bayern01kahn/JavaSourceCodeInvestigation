@@ -1,4 +1,4 @@
-package justin.juc.reentrantLock.condition;
+package justin.juc.lock.reentrantLock.condition;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

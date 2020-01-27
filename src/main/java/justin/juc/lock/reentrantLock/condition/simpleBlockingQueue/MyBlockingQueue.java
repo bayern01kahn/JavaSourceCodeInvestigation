@@ -1,4 +1,4 @@
-package justin.juc.reentrantLock.condition.simpleBlockingQueue;
+package justin.juc.lock.reentrantLock.condition.simpleBlockingQueue;
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;

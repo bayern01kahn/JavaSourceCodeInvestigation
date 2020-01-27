@@ -1,4 +1,4 @@
-package justin.juc.reentrantLock;
+package justin.juc.lock.reentrantLock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -9,10 +9,16 @@ public class ReentrantLockTest {
     public static void main(String[] args) throws InterruptedException {
 
 
-        reentrantTest();
-        //Thread.currentThread().setDaemon(true);
-//        fairLockTest();
-//        unfairLockTest();
+//        reentrantTest();
+
+        System.out.println("------非公平锁------");
+        unfairLockTest();
+
+        Thread.sleep(1000);
+        System.out.println("------公平锁------");
+
+        fairLockTest();
+
 
     }
 
@@ -26,7 +32,7 @@ public class ReentrantLockTest {
             System.out.println("第"+i+"次加锁");
         }
 
-        for(int i=1;i<=3;i++){
+        for(int i=1;i<=10;i++){
             try {
 
             } finally {
@@ -39,7 +45,7 @@ public class ReentrantLockTest {
     public static void fairLockTest(){
         Lock fairLock = new ReentrantLock(true);
 
-        for(int i=0;i<5;i++){
+        for(int i=0;i<2;i++){
             new Thread(new ThreadDemo(fairLock, i)).start();
         }
     }
@@ -47,7 +53,7 @@ public class ReentrantLockTest {
     public static void unfairLockTest(){
         Lock lock = new ReentrantLock();
 
-        for(int i=0;i<5;i++){
+        for(int i=0;i<2;i++){
             new Thread(new ThreadDemo(lock, i)).start();
         }
     }
@@ -66,15 +72,18 @@ public class ReentrantLockTest {
         @Override
 
         public void run() {
+            String tName = Thread.currentThread().getName();
+
             try {
                 TimeUnit.MILLISECONDS.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            for(int i=0;i<2;i++){
+            for(int i=0;i<3;i++){
                 lock.lock();
-                System.out.println("获得锁的线程："+id);
+                System.out.println(tName+"获得锁"+i);
                 lock.unlock();
+                System.out.println(tName+"释放锁"+i);
             }
         }
     }
