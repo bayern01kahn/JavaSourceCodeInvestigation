@@ -7,7 +7,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class MyBlockingQueue<E> {
     int size;//阻塞队列最大容量
 
-    ReentrantLock lock = new ReentrantLock();
+    //ReentrantLock lock = new ReentrantLock();
+    ReentrantLock lock = new ReentrantLock(true);
 
     LinkedList<E> list=new LinkedList<>();//队列底层实现
 
@@ -18,27 +19,27 @@ public class MyBlockingQueue<E> {
         this.size = size;
     }
 
-    public void enqueue(E e) throws InterruptedException {
+    public void enqueue(E e, String threadName) throws InterruptedException {
         lock.lock();
         try {
             while (list.size() ==size)//队列已满,在notFull条件上等待
                 notFull.await();
             list.add(e);//入队:加入链表末尾
-            System.out.println("入队：" +e);
+            System.out.println(threadName+"入队：" +e);
             notEmpty.signal(); //通知在notEmpty条件上等待的线程
         } finally {
             lock.unlock();
         }
     }
 
-    public E dequeue() throws InterruptedException {
+    public E dequeue(String threadName) throws InterruptedException {
         E e;
         lock.lock();
         try {
             while (list.size() == 0)//队列为空,在notEmpty条件上等待
                 notEmpty.await();
             e = list.removeFirst();//出队:移除链表首元素
-            System.out.println("出队："+e);
+            System.out.println(threadName+"出队："+e);
             notFull.signal();//通知在notFull条件上等待的线程
             return e;
         } finally {
@@ -48,30 +49,29 @@ public class MyBlockingQueue<E> {
 
     public static void main(String[] args) throws InterruptedException {
 
-        MyBlockingQueue<Integer> queue = new MyBlockingQueue<>(2);
+
+        final int SIZE = 3;
+
+        MyBlockingQueue<Integer> queue = new MyBlockingQueue<>(SIZE);
         for (int i = 0; i < 10; i++) {
             int data = i;
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        queue.enqueue(data);
-                    } catch (InterruptedException e) {
+            new Thread(() -> {
+                try {
+                    Thread.currentThread().setName("入队"+Thread.currentThread().getName());
+                    queue.enqueue(data, Thread.currentThread().getName());
+                } catch (InterruptedException e) {
 
-                    }
                 }
             }).start();
 
         }
         for(int i=0;i<10;i++){
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Integer data = queue.dequeue();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            new Thread(() -> {
+                try {
+                    Thread.currentThread().setName("出队"+Thread.currentThread().getName());
+                    Integer data = queue.dequeue(Thread.currentThread().getName());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }).start();
         }
