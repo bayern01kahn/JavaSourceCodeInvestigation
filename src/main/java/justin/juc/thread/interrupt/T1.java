@@ -5,9 +5,16 @@ public class T1{
     /**
      * interrupt()，在一个线程中调用另一个线程的interrupt()方法，即会向那个线程发出信号——线程中断状态已被设置。至于那个线程何去何从，由具体的代码实现决定。
      * isInterrupted()，用来判断当前线程的中断状态(true or false)。
-     * interrupted()是个 Thread 的 static 方法，测试 当前线程 是否已经是中断状态，执行后具有清除状态功能
+     * 源码:
+     * public static boolean interrupted() {
+     *   return currentThread().isInterrupted(true);
+     * }
      *
-
+     * interrupted()是个 Thread 的 static 方法，测试 当前线程 是否已经是中断状态，执行后具有清除状态功能
+     * 源码:
+     * public boolean isInterrupted() {
+     *   return isInterrupted(false);
+     * }
      */
 
 
