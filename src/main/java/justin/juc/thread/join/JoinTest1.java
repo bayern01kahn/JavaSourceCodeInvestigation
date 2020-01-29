@@ -1,4 +1,4 @@
-package justin.juc.thread;
+package justin.juc.thread.join;
 
 
 public class JoinTest1 {
