@@ -80,3 +80,15 @@
 .idea/uiDesigner.xml
 .idea/vcs.xml
 .idea/workspace.xml
+.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml
+.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_0_18.xml
+.idea/libraries/Maven__com_google_guava_guava_23_0.xml
+.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml
+.idea/libraries/Maven__com_lmax_disruptor_3_4_2.xml
+.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_5.xml
+.idea/libraries/Maven__javax_activation_activation_1_1.xml
+.idea/libraries/Maven__javax_mail_javax_mail_api_1_5_5.xml
+.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_2.xml
+.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml
+.idea/libraries/Maven__org_xerial_snappy_snappy_java_1_1_7_2.xml
+.idea/libraries/Maven__redis_clients_jedis_2_8_1.xml
