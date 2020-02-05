@@ -10,12 +10,12 @@ public class RateLimiterT1 {
         RateLimiterT1 t1 = new RateLimiterT1();
 
         //平滑突发限流
-//        t1.testSmoothBursty();
+        t1.testSmoothBursty();
 //        t1.testSmoothBursty2();
 //        t1.testSmoothBursty3();
 
         //平滑预热限流
-        t1.testSmoothwarmingUp();
+//        t1.testSmoothwarmingUp();
     }
 
 
