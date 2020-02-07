@@ -20,6 +20,11 @@ import static java.util.stream.Collectors.toList;
  *
  * @author itguang
  * @create 2017-11-21 16:50
+ *
+ *
+ *
+ *
+ * https://github.com/itguang/java8/tree/master/java8_10
  **/
 public class ClientTest {
 
@@ -230,6 +235,11 @@ public class ClientTest {
         list = findPrice4("iphone666s");
         System.out.println(list);
         System.out.println("CompletableFuture & 线程池 & 并行流 Done in "+(System.nanoTime()-start)/1_000_000+" ms");
+
+        start = System.nanoTime();
+        list = findPrice5("iphone666s");
+        System.out.println(list);
+        System.out.println("为“最优价格查询器”应用定制的执行器 Execotor & CompletableFuture Done in "+(System.nanoTime()-start)/1_000_000+" ms");
 
 
     }

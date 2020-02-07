@@ -41,7 +41,7 @@ public class HttpUtil {
 	public static void main(String args[]){
 		String APP_ID = "wxa549b28c24cf341e";
 	    String SECRET = "78d8a8cd7a4fa700142d06b96bf44a37";
-		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
+		String url = "https://Api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
 				+ APP_ID + "&secret=" + SECRET;
 		try {
 			
