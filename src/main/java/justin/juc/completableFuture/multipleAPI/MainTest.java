@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 import static java.util.stream.Collectors.toList;
 

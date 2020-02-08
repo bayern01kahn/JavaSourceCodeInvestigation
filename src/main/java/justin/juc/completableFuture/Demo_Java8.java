@@ -1,10 +1,13 @@
 package justin.juc.completableFuture;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
@@ -13,7 +16,11 @@ import java.util.function.Supplier;
 
 import static org.junit.Assert.assertEquals;
 
-public class Demo {
+
+/**
+ * https://www.jianshu.com/p/6bac52527ca4
+ */
+public class Demo_Java8 {
 
     public void waiting(long time){
         try {
@@ -24,20 +31,28 @@ public class Demo {
         }
     }
 
-    CompletableFuture<Integer> f1s = CompletableFuture.supplyAsync(() -> {
-        waiting(1);
-        return 1;
-    });
+    CompletableFuture<Integer> f1s;
+    CompletableFuture<Integer> f3s;
+    CompletableFuture<Integer> f5s;
 
-    CompletableFuture<Integer> f3s = CompletableFuture.supplyAsync(() -> {
-        waiting(3);
-        return 3;
-    });
+    public void init(){
+        f1s = CompletableFuture.supplyAsync(() -> {
+            waiting(1);
+            return 1;
+        });
 
-    CompletableFuture<Integer> f5s = CompletableFuture.supplyAsync(() -> {
-        waiting(5);
-        return 5;
-    });
+        f3s = CompletableFuture.supplyAsync(() -> {
+            waiting(3);
+            return 3;
+        });
+
+        f5s = CompletableFuture.supplyAsync(() -> {
+            waiting(5);
+            return 5;
+        });
+    }
+
+
 
 
     /**
@@ -56,13 +71,34 @@ public class Demo {
     }
 
 
+    /**
+     * 针对超时的处理建议使用另外的线程池,然后对线程池进行超时控制
+     * Java9 已有专门的针对超时的 方法  见  Demo_Java9
+     */
+    @Test
+    public void TimeOut() throws Exception{
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(10);
+            } catch (InterruptedException e) {
+            }
+            System.out.println("Waiting 10s ...");
+        }, executorService);
+        future.get();
+
+        if(!executorService.awaitTermination(3,TimeUnit.SECONDS)){
+            System.out.println("超时机制启动,结束");
+        }
+
+    }
 
     /**
      * 异步执行 带返回值
      */
     @Test
     public void supplyAsync() throws Exception{
-
+        init();
         long time = f1s.get();
         //long time = f3s.get();
         //long time = f5s.get();
@@ -126,6 +162,7 @@ public class Demo {
      */
     @Test
     public void thenApply() throws Exception{
+        init();
         f3s.thenApply(new Function<Integer, Integer>() {
             @Override
             public Integer apply(Integer t) {
@@ -271,7 +308,7 @@ public class Demo {
      */
     @Test
     public void thenAcceptBoth() throws Exception {
-
+        init();
         final Integer[] value = {0};
 
         f1s.thenAcceptBoth(f3s, new BiConsumer<Integer, Integer>() {
@@ -305,6 +342,7 @@ public class Demo {
      */
     @Test
     public void applyToEither() throws Exception {
+        init();
         CompletableFuture<Integer> result = f1s.applyToEither(f3s, new Function<Integer, Integer>() {
             @Override
             public Integer apply(Integer t) {
@@ -322,7 +360,7 @@ public class Demo {
      */
     @Test
     public void runAfterEither() throws Exception {
-
+        init();
         f1s.runAfterEither(f3s, new Runnable() {
 
             @Override
@@ -420,6 +458,7 @@ public class Demo {
      */
     @Test
     public void anyOf() {
+        init();
         CompletableFuture<Object> future = CompletableFuture.anyOf(f1s, f3s, f5s);
         Object result = future.join();
         System.out.println("执行结束: "+ result);
@@ -435,6 +474,7 @@ public class Demo {
      */
     @Test
     public void allOf(){
+        init();
         CompletableFuture<Void> all = CompletableFuture.allOf(f1s, f3s, f5s);
 
         //阻塞，直到所有任务结束。
