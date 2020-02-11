@@ -1,4 +1,4 @@
-package justin.threadPool;
+package justin.juc.threadPool;
 
 public class MyThread extends Thread {
 

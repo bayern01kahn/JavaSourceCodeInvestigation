@@ -1,4 +1,4 @@
-package justin.threadPool;
+package justin.juc.threadPool;
 
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;

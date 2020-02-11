@@ -1,4 +1,4 @@
-package justin.test;
+package justin.juc.lock.synchronizedLock;
 
 public class SynchronizedDemo {
 	//共享变量
