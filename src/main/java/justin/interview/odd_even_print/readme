@@ -1,0 +1,5 @@
+
+经典面试题-两个线程交替打印奇数和偶数
+
+1.线程A打印奇数，线程B打印偶数，线程A和线程B交替打印，使用对象监视器实现         OddEvenMonitorPrinter
+2.线程A打印奇数，线程B打印偶数，线程A和线程B交替打印，使用JDK提供的并发类库实现   OddEvenReetrantLockPrinter
