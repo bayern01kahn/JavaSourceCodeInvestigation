@@ -1,4 +1,4 @@
-package justin.hashmap;
+package justin.hashmap.hashcode_equals;
 
 
 public class UserRewriteHashCodeNotEquals {
