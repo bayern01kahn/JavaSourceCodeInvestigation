@@ -92,3 +92,5 @@
 .idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml
 .idea/libraries/Maven__org_xerial_snappy_snappy_java_1_1_7_2.xml
 .idea/libraries/Maven__redis_clients_jedis_2_8_1.xml
+.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml
+JavaSourceCodeInvestigation.iml
