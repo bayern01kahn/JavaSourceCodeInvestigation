@@ -1,5 +1,6 @@
 package justin.algorithm.search.binary;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -50,9 +51,13 @@ public class BinarySearchTwoWay {
 	
 	public static void main(String[] args) {
 		
-		//int [] arr = {1,4,3,7,5,2,9,7,8,10};
-		
-		binarySearch(null, 0, 0, null);
+		Integer[] arr = {1,4,3,7,5,2,9,7,8,10};
+		Arrays.sort(arr);// 二分搜索法(使用之前需要先排序)
+		System.out.print("排序后的数据:  "+ "  ");
+		Arrays.stream(arr).forEach(i -> System.out.print(i+" "));
+
+		int result = binarySearch(arr, 0, arr.length, 7);
+		System.out.println("\n被查找元素位于数据下标: "+ result);
 	}
 	
 	
