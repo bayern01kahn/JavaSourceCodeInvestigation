@@ -1,4 +1,4 @@
+ArrayStoreBinaryTree       - 用数组存储二叉树
+GreatestCommonDivisor      - 求2个数的最大公约数
 
-GreatestCommonDivisor - 求2个数的最大公约数
-
-MaxSubsequenceSum - 求数组的 最大连续子序列的和
+MaxSubsequenceSum          - 求数组的 最大连续子序列的和
