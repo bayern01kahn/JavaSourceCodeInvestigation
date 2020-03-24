@@ -4,6 +4,13 @@ package justin.dataStructure.AVLTree;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
+/**
+ * 平衡二叉树(AVL)的理解和实现(Java)
+ * https://blog.csdn.net/lishanleilixin/article/details/88538491
+ *
+ *
+ */
 public class MyAVLTree {
 
     public class AVLNode {

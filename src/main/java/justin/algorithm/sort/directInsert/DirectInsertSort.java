@@ -3,7 +3,7 @@ package justin.algorithm.sort.directInsert;
 
 import justin.util.PrintUtil;
 
-/*
+/**
  * 直接插入排序
 
    算法思路是：
