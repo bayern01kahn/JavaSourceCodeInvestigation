@@ -263,7 +263,7 @@
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>3.2.10</version>
+            <version>3.3.0</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>ant-launcher</artifactId>
@@ -322,6 +322,18 @@
 				<exclusion>
 					<artifactId>apiguardian-api</artifactId>
 					<groupId>org.apiguardian</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>asm</artifactId>
+					<groupId>org.ow2.asm</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>asm</artifactId>
+					<groupId>org.ow2.asm</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>accessors-smart</artifactId>
+					<groupId>net.minidev</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
