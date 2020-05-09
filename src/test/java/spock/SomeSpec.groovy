@@ -20,8 +20,7 @@ class SomeSpec extends Specification {
         noExceptionThrown()
 
         where:
-        user << [
-                new User(userName: 'tester'),
+        user << [ new User(userName: 'tester'),
                 new User(userName: 'joe')]
     }
 
