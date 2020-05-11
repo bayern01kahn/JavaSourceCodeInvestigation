@@ -14,8 +14,8 @@ public class exam {
 
     @Test
     public void test1() {
-        System.out.println(f(1));
-        System.out.println(2.0/(3*5*7*11*13));
+        System.out.println(f(5));
+        System.out.println(30.0/(3*5*7*11*13));
     }
 
     @Test
@@ -33,9 +33,12 @@ public class exam {
     }
 
     public double f(int n){
+        return sumf(n)/(3*5*7*11*13);
+    }
+
+    public int sumf(int n){
         if(n <=0) return 0;
-        return (f(n-1)+2*n)/(3*5*7*11*13);
-//        return (f(n-1)+2*n);
+        return sumf(n-1)+2*n;
     }
 
 
