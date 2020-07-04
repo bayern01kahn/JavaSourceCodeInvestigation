@@ -1,6 +1,11 @@
 package justin.guava.listenableFuture;
 
-import com.google.common.util.concurrent.*;
+
+import jersey.repackaged.com.google.common.util.concurrent.FutureCallback;
+import jersey.repackaged.com.google.common.util.concurrent.Futures;
+import jersey.repackaged.com.google.common.util.concurrent.ListenableFuture;
+import jersey.repackaged.com.google.common.util.concurrent.ListeningExecutorService;
+import jersey.repackaged.com.google.common.util.concurrent.MoreExecutors;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
