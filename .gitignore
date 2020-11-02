@@ -4,6 +4,7 @@
 .idea/artifacts/JavaSourceCodeInvestigation_war_exploded.xml
 .idea/compiler.xml
 .idea/emacs.xml
+.idea/libraries/*
 .idea/libraries/Maven__aopalliance_aopalliance_1_0.xml
 .idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml
 .idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml
@@ -114,3 +115,6 @@ JavaSourceCodeInvestigation.iml
 .idea/libraries/Maven__org_apache_ant_ant_launcher_1_10_3.xml
 .idea/libraries/Maven__org_apache_ant_ant_1_10_3.xml
 .idea/libraries/Maven__cglib_cglib_3_2_10.xml
+.idea/checkstyle-idea.xml
+.idea/hotswap_agent.xml
+.idea/jarRepositories.xml
