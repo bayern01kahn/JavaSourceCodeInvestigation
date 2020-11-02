@@ -427,9 +427,15 @@
 			<version>0.10</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>2.6.0</version>
+		</dependency>
 
 
-    </dependencies>
+	</dependencies>
 	<build>
 		<finalName>JavaSourceCodeInvestigation</finalName>
 
