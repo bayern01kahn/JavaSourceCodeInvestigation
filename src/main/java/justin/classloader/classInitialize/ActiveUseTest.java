@@ -30,7 +30,6 @@ public class ActiveUseTest {
         // 主动使用6.启动类, 比如 java HelloWorld
 
 
-
         //  特殊例子
         //  被动使用.1  使用子类调用父类的静态变量  因为 静态变量其实不属于某个类, 而存在于静态变量表中
         System.out.println(Child.i);  //此时只会初始化父类, 而子类不会被初始化

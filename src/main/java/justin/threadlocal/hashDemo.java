@@ -16,13 +16,43 @@ package justin.threadlocal;
  */
 public class hashDemo {
     private static final int HASH_INCREMENT = 0x61c88647;
+    private static final int OTHER_HASH_INCREMENT = 0x7;
 
     public static void main(String[] args) throws Exception {
         hashCode(4);
         hashCode(16);
         hashCode(32);
+        //hashCode(64);
+        //hashCode(128);
+        //hashCode(256);
+
+        System.out.println("\n\n修改长度非2次幂后: 出现大量重复的情况\n\n");
+
+        hashCode(5);
+        hashCode(10);
+        hashCode(20);
+
+//        testAnotherHashCode(4);
+//        testAnotherHashCode(16);
+//        testAnotherHashCode(32);
+//        testAnotherHashCode(64);
+        //testAnotherHashCode(128);
+        //testAnotherHashCode(256);
     }
 
+    /**
+     * 我们分别模拟了ThreadLocalMap容量为4,16,32的情况下，不触发扩容，并且分别”放入”4,16,32个元素到容器中，输出结果如下：
+     *
+     * 3 2 1 0
+     * 7 14 5 12 3 10 1 8 15 6 13 4 11 2 9 0
+     * 7 14 21 28 3 10 17 24 31 6 13 20 27 2 9 16 23 30 5 12 19 26 1 8 15 22 29 4 11 18 25 0
+     * 每组的元素经过散列算法后恰好填充满了整个容器，也就是实现了完美散列。实际上，这个并不是偶然，其实整个哈希算法可以转换为多项式证明：
+     * 证明(x - y) * HASH_INCREMENT != 2^n * (n m)，在x != y，n != m，HASH_INCREMENT为奇数的情况下恒成立，具体证明可以自行完成。
+     *
+     * HASH_INCREMENT赋值为0x61c88647的API文档注释如下：
+     *
+     * 连续生成的哈希码之间的差异(增量值)，将隐式顺序线程本地id转换为几乎最佳分布的乘法哈希值，这些不同的哈希值最终生成一个2的幂次方的哈希表。
+     */
     private static void hashCode(int capacity) throws Exception {
         int keyIndex;
         for (int i = 0; i < capacity; i++) {
@@ -32,18 +62,17 @@ public class hashDemo {
         }
         System.out.println();
     }
+
+
+    private static void testAnotherHashCode(int capacity) throws Exception {
+        int keyIndex;
+        for (int i = 0; i < capacity; i++) {
+            keyIndex = ((i + 1) * OTHER_HASH_INCREMENT) & (capacity - 1);
+            System.out.print(keyIndex);
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
 }
 
-/**
- * 我们分别模拟了ThreadLocalMap容量为4,16,32的情况下，不触发扩容，并且分别”放入”4,16,32个元素到容器中，输出结果如下：
- *
- * 3 2 1 0
- * 7 14 5 12 3 10 1 8 15 6 13 4 11 2 9 0
- * 7 14 21 28 3 10 17 24 31 6 13 20 27 2 9 16 23 30 5 12 19 26 1 8 15 22 29 4 11 18 25 0
- * 每组的元素经过散列算法后恰好填充满了整个容器，也就是实现了完美散列。实际上，这个并不是偶然，其实整个哈希算法可以转换为多项式证明：
- * 证明(x - y) * HASH_INCREMENT != 2^n * (n m)，在x != y，n != m，HASH_INCREMENT为奇数的情况下恒成立，具体证明可以自行完成。
- *
- * HASH_INCREMENT赋值为0x61c88647的API文档注释如下：
- *
- * 连续生成的哈希码之间的差异(增量值)，将隐式顺序线程本地id转换为几乎最佳分布的乘法哈希值，这些不同的哈希值最终生成一个2的幂次方的哈希表。
- */
+
