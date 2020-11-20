@@ -1,4 +1,4 @@
-package justin.dataStructure.BTree;
+package justin.dataStructure.tree.BTree;
 
 import java.util.LinkedList;
 

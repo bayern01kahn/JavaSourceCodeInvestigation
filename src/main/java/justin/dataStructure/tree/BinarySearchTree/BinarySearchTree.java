@@ -1,4 +1,4 @@
-package justin.dataStructure.BinarySearchTree;
+package justin.dataStructure.tree.BinarySearchTree;
 
 public class BinarySearchTree {
 

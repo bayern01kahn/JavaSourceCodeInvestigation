@@ -1,4 +1,4 @@
-package justin.dataStructure.redBlackTree.KnIfER;
+package justin.dataStructure.tree.redBlackTree.KnIfER;
 
 /**
  * Java 语言: 红黑树

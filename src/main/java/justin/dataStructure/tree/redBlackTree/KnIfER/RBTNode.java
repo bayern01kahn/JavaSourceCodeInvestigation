@@ -1,4 +1,4 @@
-package justin.dataStructure.redBlackTree.KnIfER;
+package justin.dataStructure.tree.redBlackTree.KnIfER;
 
 public class RBTNode<T extends Comparable<T>> {
     private static final boolean RED   = false;

@@ -1,4 +1,4 @@
-package justin.dataStructure.treemap;
+package justin.dataStructure.map.treemap;
 
 import java.util.Iterator;
 import java.util.Map;

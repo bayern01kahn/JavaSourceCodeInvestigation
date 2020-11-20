@@ -1,4 +1,4 @@
-package justin.dataStructure.BPTree.example1.zhangtianlong;
+package justin.dataStructure.tree.BPTree;
 
 /**
  * Tree

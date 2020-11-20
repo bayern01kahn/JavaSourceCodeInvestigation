@@ -1,4 +1,4 @@
-package justin.dataStructure.redBlackTree.KnIfER;
+package justin.dataStructure.tree.redBlackTree.KnIfER;
 
 import java.awt.Color;
 import java.awt.EventQueue;

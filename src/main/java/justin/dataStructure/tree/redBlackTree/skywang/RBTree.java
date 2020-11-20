@@ -1,4 +1,4 @@
-package justin.dataStructure.redBlackTree.skywang;
+package justin.dataStructure.tree.redBlackTree.skywang;
 
 /**
  * Java 语言: 红黑树

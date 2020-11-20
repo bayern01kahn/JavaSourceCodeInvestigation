@@ -1,4 +1,4 @@
-package justin.dataStructure.BinarySearchTree.impl1;
+package justin.dataStructure.tree.BinarySearchTree.impl1;
 
 public class Main {
     public static void main(String[] args) {

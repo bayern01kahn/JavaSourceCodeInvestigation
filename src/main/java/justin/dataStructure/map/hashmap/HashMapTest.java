@@ -1,4 +1,4 @@
-package justin.dataStructure.hashmap;
+package justin.dataStructure.map.hashmap;
 
 import java.util.ArrayList;
 import java.util.HashMap;

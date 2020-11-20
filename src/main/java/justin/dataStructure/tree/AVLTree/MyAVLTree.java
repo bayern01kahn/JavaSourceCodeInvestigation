@@ -1,4 +1,4 @@
-package justin.dataStructure.AVLTree;
+package justin.dataStructure.tree.AVLTree;
 
 
 import java.util.LinkedList;

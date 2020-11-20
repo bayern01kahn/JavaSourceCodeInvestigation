@@ -1,4 +1,4 @@
-package justin.dataStructure.BinarySearchTree.impl1;
+package justin.dataStructure.tree.BinarySearchTree.impl1;
 
 import java.util.LinkedList;
 import java.util.Queue;
