@@ -8,7 +8,7 @@ public class MyBlockingQueue<E> {
     int size;//阻塞队列最大容量
 
     //ReentrantLock lock = new ReentrantLock();
-    ReentrantLock lock = new ReentrantLock(true);
+    ReentrantLock lock = new ReentrantLock(false);
 
     LinkedList<E> list=new LinkedList<>();//队列底层实现
 
@@ -23,9 +23,12 @@ public class MyBlockingQueue<E> {
         lock.lock();
         try {
             while (list.size() ==size)//队列已满,在notFull条件上等待
+            {
                 notFull.await();
+            }
+
             list.add(e);//入队:加入链表末尾
-            System.out.println(threadName+"入队：" +e);
+            System.out.println(e + " =>入队("+threadName+")");
             notEmpty.signal(); //通知在notEmpty条件上等待的线程
         } finally {
             lock.unlock();
@@ -37,9 +40,12 @@ public class MyBlockingQueue<E> {
         lock.lock();
         try {
             while (list.size() == 0)//队列为空,在notEmpty条件上等待
+            {
                 notEmpty.await();
+            }
+
             e = list.removeFirst();//出队:移除链表首元素
-            System.out.println(threadName+"出队："+e);
+            System.out.println(e + " =>出队("+threadName+")");
             notFull.signal();//通知在notFull条件上等待的线程
             return e;
         } finally {
@@ -49,15 +55,14 @@ public class MyBlockingQueue<E> {
 
     public static void main(String[] args) throws InterruptedException {
 
-
         final int SIZE = 3;
 
         MyBlockingQueue<Integer> queue = new MyBlockingQueue<>(SIZE);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             int data = i;
             new Thread(() -> {
                 try {
-                    Thread.currentThread().setName("入队"+Thread.currentThread().getName());
+                    Thread.currentThread().setName(Thread.currentThread().getName());
                     queue.enqueue(data, Thread.currentThread().getName());
                 } catch (InterruptedException e) {
 
@@ -65,10 +70,10 @@ public class MyBlockingQueue<E> {
             }).start();
 
         }
-        for(int i=0;i<10;i++){
+        for(int i=0;i<20;i++){
             new Thread(() -> {
                 try {
-                    Thread.currentThread().setName("出队"+Thread.currentThread().getName());
+                    Thread.currentThread().setName(Thread.currentThread().getName());
                     Integer data = queue.dequeue(Thread.currentThread().getName());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
