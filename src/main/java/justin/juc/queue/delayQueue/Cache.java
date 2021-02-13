@@ -51,7 +51,9 @@ public class Cache<K, V> {
             if (delayedItem != null) {
                 map.remove(delayedItem.getT());
                 System.out.println(System.nanoTime()+" remove "+delayedItem.getT() +" from cache");
-            }
+            } /*else {
+                System.out.println("poll null skip");
+            }*/
             try {
                 Thread.sleep(300);
             } catch (Exception e) {
