@@ -12,7 +12,6 @@ public class Solution {
     Condition buzz = lock.newCondition();
     Condition fizzbuzz = lock.newCondition();
 
-
     private int n;
     private volatile int i = 0;
 
